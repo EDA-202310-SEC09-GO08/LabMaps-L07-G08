@@ -28,6 +28,7 @@ import sys
 import controller
 from DISClib.ADT import list as lt
 assert cf
+import matplotlib.pyplot as plt
 
 
 """
@@ -126,6 +127,8 @@ def printMenu():
     print("3- Consultar los libros de un año")
     print("4- Consultar los libros de un autor")
     print("5- Consultar los Libros por etiqueta")
+    print("6- Consultar los Libros por etiqueta")
+    print("7 - clase")
     # TODO lab 6, agregar la opcion nueva del menu
     print("0- Salir")
 
@@ -161,6 +164,11 @@ while True:
         label = input("Etiqueta a buscar: ")
         books = controller.getBooksByTag(ctrlr, label)
         printBooksbyTag(books)
+    elif int(inputs[0]) == 7:
+        res = controller.clase(ctrlr)
+        plt.hist(res)
+        plt.show()
+    
 
     elif int(inputs[0]) == 6:
         # TODO lab 6, conectar con las funciones del controlador e imprimir

@@ -39,7 +39,6 @@ y otra para géneros
 
 # Construccion de modelos
 
-
 def newCatalog():
     """ Inicializa el catálogo de libros
 
@@ -59,7 +58,8 @@ def newCatalog():
                'authors': None,
                'tags': None,
                'tagIds': None,
-               'years': None}
+               'years': None,
+               "titles" : None}
 
     """
     Esta lista contiene todo los libros encontrados
@@ -120,11 +120,23 @@ def newCatalog():
     La columna 'titles' del archivo books.csv
     """
     # TODO lab 6, agregar el ADT map con newMap()
-    catalog['titles'] = None
+    catalog['titles'] = mp.newMap(160, maptype="PROBING", loadfactor=0.5, cmpfunction= compareTitles)
 
     return catalog
 
+def clase(catalog):
+    tabla = catalog["model"]['bookIds']["table"]
+                    
+    respuesta = []
+    i = 0
+    while i< lt.size(tabla):
+        prim = lt.getElement(tabla, i)
+        sub = mp.size(prim)
+        respuesta.append( sub)
+        i+=1
 
+    
+    return respuesta
 # Funciones para creacion de datos
 
 def newAuthor(name):
@@ -314,7 +326,10 @@ def getBookByTitle(catalog, title):
     """
     Completar la descripcion de getBookByTitle
     """
-    pass
+    title = mp.get(catalog["title"], title)
+    if title:
+        return me.getValue(title)["books"]
+    return None
 
 
 def booksSize(catalog):
@@ -343,7 +358,7 @@ def titlesSize(catalog):
     """
     Completar la descripcion de titlesSize
     """
-    pass
+    return mp.size(catalog["title"])
 
 
 # ==============================
@@ -441,5 +456,14 @@ def compareTitles(title, book):
     Returns:
         int: retrona 0 si son iguales, 1 si el primero es mayor
         y -1 si el primero es menor
+    
+    
     """
-    pass
+    bookentry = me.getKey(book)
+    if (int(title) == int(bookentry)):
+        return 0
+    elif (int(title) > int(bookentry)):
+        return 1
+    else:
+        return -1
+

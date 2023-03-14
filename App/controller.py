@@ -69,6 +69,10 @@ def loadBooks(control):
         model.addBook(control['model'], book)
 
 
+def clase(control):
+    res = model.clase(control)
+    return res
+
 def loadTags(control):
     """
     Carga todos los tags del archivo e indica al modelo
@@ -160,7 +164,9 @@ def getBooksByTitle(control, title):
     """
     Completar la descripcion de getBooksByTittle
     """
-    pass
+    titulo = model.getBookByTitle(control, title)
+    return titulo
+    
 
 
 def titlesSize(control):
@@ -168,4 +174,5 @@ def titlesSize(control):
     """
     Completar la descripcion de titlesSize
     """
-    pass
+    tamanio = model.titlesSize()
+    return tamanio
