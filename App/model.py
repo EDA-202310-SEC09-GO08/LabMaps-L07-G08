@@ -120,7 +120,10 @@ def newCatalog():
     La columna 'titles' del archivo books.csv
     """
     # TODO lab 6, agregar el ADT map con newMap()
-    catalog['titles'] = mp.newMap(160, maptype="PROBING", loadfactor=0.5, cmpfunction= compareTitles)
+    catalog['titles'] = mp.newMap(160, 
+                                  maptype="PROBING", 
+                                  loadfactor=0.5, 
+                                  cmpfunction= compareTitles)
 
     return catalog
 
@@ -282,7 +285,6 @@ def addBookTitle(catalog, title):
     """
     Completar la descripcion de addBookTitle
     """
-    pass
 
 
 # ==============================
