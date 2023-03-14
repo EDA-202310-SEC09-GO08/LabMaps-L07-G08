@@ -180,7 +180,7 @@ while True:
         # TODO lab 6, conectar con las funciones del controlador e imprimir
         # controller.getBooksByTitle(ctrlr, title)
         # controller.titleSize(ctrlr)
-        res = controller.getBooksByTitle(ctrlr)
+        res = controller.getBooksByTitle(ctrlr, title)
         plt.hist(res)
         plt.show()
 
